@@ -8,7 +8,8 @@ SELECT
     layer,
     railway,
     tunnel,
-    oneway
+    oneway,
+    %#tags AS tags
 
 FROM planet_osm_line
 
