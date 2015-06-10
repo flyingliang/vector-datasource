@@ -4,7 +4,8 @@ SELECT
     name,
     abbr_name,
     country_name,
-    population
+    population,
+    type
 FROM
 (
     -- The 10m country borders table contains some large, highly detailed
@@ -20,17 +21,17 @@ FROM
     -- population, etc. fields (note that they'll by definition have the same
     -- value), so we just use max().
     SELECT
-        original_gid as __id__,
+        orig_gid as __id__,
         max(name_long) as name,
         max(name_long)::text as country_name,
         max(adm0_a3) as abbr_name,
-        max(pop_est) as population,
+        max(pop_est)::double precision as population,
         st_union(the_geom) as __geometry__,
         'country' as type
     FROM
-        ne_10m_country_borders_tiles
+        ne_10m_country_borders
     WHERE the_geom && !bbox!
-    GROUP BY original_gid
+    GROUP BY orig_gid
 
     UNION
 

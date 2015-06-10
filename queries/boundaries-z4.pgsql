@@ -4,7 +4,8 @@ SELECT
     name,
     abbr_name,
     country_name,
-    population
+    population,
+    type
 FROM
 (
     SELECT
