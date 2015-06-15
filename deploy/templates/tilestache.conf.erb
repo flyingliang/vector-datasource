@@ -39,7 +39,8 @@
                 "landuse_labels",
                 "roads",
                 "buildings",
-                "pois"
+                "pois",
+                "boundaries"
             ],
             "ignore_cached_sublayers": true
         }
@@ -429,6 +430,46 @@
                 "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/water-z14.pgsql",
                 "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/water-z15.pgsql",
                 "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/water-z16.pgsql"
+            ],
+            "geometry_types": [
+                "Polygon",
+                "MultiPolygon",
+                "LineString",
+                "MultiLineString"
+            ],
+            "transform_fns": [
+                "TileStache.Goodies.VecTiles.transform.add_id_to_properties",
+                "TileStache.Goodies.VecTiles.transform.detect_osm_relation",
+                "TileStache.Goodies.VecTiles.transform.remove_feature_id"
+            ],
+            "simplify_before_intersect": true,
+            "sort_fn": "TileStache.Goodies.VecTiles.sort.water"
+        }
+    }
+},
+    "boundaries": {
+    "allowed origin": "*",
+    "cache lifespan": "<%= node[:mapzen_tilestache][:max_age] %>",
+    "maximum cache age": "<%= node[:mapzen_tilestache][:max_age] %>",
+    "provider": {
+        "class": "TileStache.Goodies.VecTiles:Provider",
+        "kwargs": {
+            "dbinfo": {
+                "host": "<%= node[:mapzen][:postgresql][:endpoint] %>",
+                "port": 5432,
+                "user": "gisuser",
+                "database": "tilestache-gis",
+                "password": "<%= node[:mapzen][:secrets][:postgresql][:password][:gisuser] %>"
+            },
+            "queries": [
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z0.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z0.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z0.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z0.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z4.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z4.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z4.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/boundaries-z7.pgsql"
             ],
             "geometry_types": [
                 "Polygon",
