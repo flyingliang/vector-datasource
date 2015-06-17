@@ -39,7 +39,8 @@
                 "landuse_labels",
                 "roads",
                 "buildings",
-                "pois"
+                "pois",
+                "routes"
             ],
             "ignore_cached_sublayers": true
         }
@@ -443,6 +444,51 @@
             ],
             "simplify_before_intersect": true,
             "sort_fn": "TileStache.Goodies.VecTiles.sort.water"
+        }
+    }
+},
+    "routes": {
+    "allowed origin": "*",
+    "cache lifespan": "<%= node[:mapzen_tilestache][:max_age] %>",
+    "maximum cache age": "<%= node[:mapzen_tilestache][:max_age] %>",
+    "provider": {
+        "class": "TileStache.Goodies.VecTiles:Provider",
+        "kwargs": {
+            "dbinfo": {
+                "host": "<%= node[:mapzen][:postgresql][:endpoint] %>",
+                "port": 5432,
+                "user": "gisuser",
+                "database": "tilestache-gis",
+                "password": "<%= node[:mapzen][:secrets][:postgresql][:password][:gisuser] %>"
+            },
+            "queries": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z14.pgsql"
+            ],
+            "geometry_types": [
+                "LineString",
+                "MultiLineString"
+            ],
+            "transform_fns": [
+                "TileStache.Goodies.VecTiles.transform.add_id_to_properties",
+                "TileStache.Goodies.VecTiles.transform.detect_osm_relation",
+                "TileStache.Goodies.VecTiles.transform.route_name",
+                "TileStache.Goodies.VecTiles.transform.remove_feature_id"
+            ],
+            "sort_fn": "TileStache.Goodies.VecTiles.sort.routes"
         }
     }
 }
