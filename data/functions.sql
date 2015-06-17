@@ -324,6 +324,17 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
+CREATE OR REPLACE FUNCTION mz_calculate_route_level(route_val text, network_val text)
+RETURNS SMALLINT AS $$
+BEGIN
+    RETURN (
+        CASE WHEN route_val IN ('train', 'railway') THEN 6
+             WHEN route_val='subway' THEN 10
+             ELSE NULL END
+    );
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
 -- functions to temporarily enable and disable triggers
 -- prevents them from firing while executing mass updates
 
