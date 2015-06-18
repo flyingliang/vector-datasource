@@ -13,4 +13,4 @@ SELECT
 FROM planet_osm_line
 
 WHERE
-    mz_calculate_road_level(highway, railway, aeroway) <= 14
+    mz_calculate_road_level(highway, railway, aeroway) <= 7
