@@ -22,3 +22,4 @@ import_shapefile ne_10m_land-tiled-merc.shp ne_10m_land
 import_shapefile ne_50m_land-merc.shp ne_50m_land
 import_shapefile ne_110m_land-merc.shp ne_110m_land
 import_shapefile ne_10m_populated_places-merc.shp ne_10m_populated_places
+import_shapefile ne_10m_roads-merc.shp ne_10m_roads
