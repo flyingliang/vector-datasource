@@ -4,7 +4,7 @@
 #
 
 import_shapefile(){
-	shp2pgsql -dID -s 900913 -W Windows-1252 -g the_geom "$1" "$2"
+	shp2pgsql -dID -s 900913 -W Windows-1252 -g the_geom $*
 }
 
 import_shapefile ne_10m_lakes-merc.shp ne_10m_lakes
@@ -23,3 +23,7 @@ import_shapefile ne_50m_land-merc.shp ne_50m_land
 import_shapefile ne_110m_land-merc.shp ne_110m_land
 import_shapefile ne_10m_populated_places-merc.shp ne_10m_populated_places
 import_shapefile ne_10m_roads-merc.shp ne_10m_roads
+import_shapefile ne_110m_admin_0_countries-merc.shp ne_110m_country_borders
+import_shapefile ne_50m_admin_0_countries-merc.shp ne_50m_country_borders
+import_shapefile ne_10m_admin_0_countries-merc.shp ne_10m_country_borders
+import_shapefile -W LATIN1 ne_10m_admin_1_states_provinces-merc.shp ne_10m_state_borders
