@@ -252,8 +252,7 @@ BEGIN
                 OR aeroway_val IN ('runway', 'taxiway')) THEN 11
              WHEN highway_val IN ('motorway_link', 'trunk_link', 'residential', 'unclassified', 'road') THEN 12
              WHEN highway_val IN ('primary_link', 'secondary_link') THEN 13
-             WHEN (highway_val IN ('tertiary_link', 'minor')
-                OR railway_val IN ('rail', 'subway')) THEN 14
+             WHEN highway_val IN ('tertiary_link', 'minor') THEN 14
              WHEN (highway_val IN ('service', 'footpath', 'track', 'footway', 'steps', 'pedestrian', 'path', 'cycleway', 'living_street')
                 OR railway_val IN ('tram', 'light_rail', 'narrow_gauge', 'monorail')) THEN 15
              ELSE NULL END
