@@ -27,6 +27,3 @@ import_shapefile ne_110m_admin_0_countries-merc.shp ne_110m_country_borders
 import_shapefile ne_50m_admin_0_countries-merc.shp ne_50m_country_borders
 import_shapefile ne_10m_admin_0_countries-merc.shp ne_10m_country_borders
 import_shapefile -W LATIN1 ne_10m_admin_1_states_provinces-merc.shp ne_10m_state_borders
-import_shapefile ne_110m_coastline-merc.shp ne_110m_coastline
-import_shapefile ne_50m_coastline-merc.shp ne_50m_coastline
-import_shapefile ne_10m_coastline-merc.shp ne_10m_coastline
