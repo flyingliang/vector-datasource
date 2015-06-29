@@ -40,9 +40,8 @@
                 "roads",
                 "buildings",
                 "pois",
-                "routes",
-                "boundaries",
-                "coastline"
+                "transit",
+                "boundaries"
             ],
             "ignore_cached_sublayers": true
         }
@@ -473,7 +472,7 @@
         }
     }
 },
-    "routes": {
+    "transit": {
     "allowed origin": "*",
     "cache lifespan": "<%= node[:mapzen_tilestache][:max_age] %>",
     "maximum cache age": "<%= node[:mapzen_tilestache][:max_age] %>",
@@ -494,15 +493,11 @@
                 null,
                 null,
                 null,
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z6.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z10.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/routes-z14.pgsql"
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/transit-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/transit-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/transit-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/transit-z6.pgsql",
+                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/transit-z10.pgsql"
             ],
             "geometry_types": [
                 "LineString",
@@ -517,7 +512,7 @@
                 "TileStache.Goodies.VecTiles.transform.route_name",
                 "TileStache.Goodies.VecTiles.transform.remove_feature_id"
             ],
-            "sort_fn": "TileStache.Goodies.VecTiles.sort.routes"
+            "sort_fn": "TileStache.Goodies.VecTiles.sort.transit"
         }
     }
 },
@@ -558,44 +553,6 @@
             ],
             "simplify_before_intersect": true,
             "sort_fn": "TileStache.Goodies.VecTiles.sort.water"
-        }
-    }
-},
-    "coastline": {
-    "allowed origin": "*",
-    "cache lifespan": "<%= node[:mapzen_tilestache][:max_age] %>",
-    "maximum cache age": "<%= node[:mapzen_tilestache][:max_age] %>",
-    "provider": {
-        "class": "TileStache.Goodies.VecTiles:Provider",
-        "kwargs": {
-            "dbinfo": {
-                "host": "<%= node[:mapzen][:postgresql][:endpoint] %>",
-                "port": 5432,
-                "user": "gisuser",
-                "database": "tilestache-gis",
-                "password": "<%= node[:mapzen][:secrets][:postgresql][:password][:gisuser] %>"
-            },
-            "queries": [
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z0.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z0.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z0.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z0.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z4.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z4.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z4.pgsql",
-                "<%= node[:mapzen_tilestache][:query_dir_name] %>/current/queries/coastline-z7.pgsql"
-            ],
-            "geometry_types": [
-                "LineString",
-                "MultiLineString"
-            ],
-            "transform_fns": [
-                "TileStache.Goodies.VecTiles.transform.add_id_to_properties",
-                "TileStache.Goodies.VecTiles.transform.detect_osm_relation",
-                "TileStache.Goodies.VecTiles.transform.remove_feature_id",
-                "TileStache.Goodies.VecTiles.transform.update_scalerank_type"
-            ],
-            "simplify_before_intersect": true
         }
     }
 }
