@@ -4,7 +4,7 @@ SELECT
     name,
     ref,
     operator,
-    route,
+    route AS kind,
     tags->'type' AS type,
     tags->'colour' AS colour,
     tags->'network' AS network,
