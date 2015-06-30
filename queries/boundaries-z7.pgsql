@@ -5,7 +5,7 @@ FROM
         gid AS __id__,
         the_geom AS __geometry__,
         name,
-        type,
+        'country' AS type
         scalerank::float,
         featurecla AS kind,
         labelrank
@@ -19,7 +19,7 @@ FROM
         gid AS __id__,
         the_geom AS __geometry__,
         name,
-        type,
+        'state' AS type
         scalerank::float,
         featurecla AS kind,
         NULL AS labelrank
